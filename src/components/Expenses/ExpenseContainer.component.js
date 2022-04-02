@@ -7,15 +7,17 @@ import { filterByYearHandler } from '../../Utilities'
 import './ExpenseContainer.component.css';
 
 function ExpensesContainer(props) {
-
+    // Saving Initial Data into variable
     const expenses = props.items;
 
-    const [filterYearState, setFilterYearState] = useState('2019');
+    const [filterYearState, setFilterYearState] = useState('');
 
+    // Function used to lift the filter state to be used in this component
     const saveFilterYearHandler = year => {    
         setFilterYearState(year);
     }
 
+    // Saving the filtered expenses data that will be used to dynamically generate expense items
     const filteredData = filterByYearHandler(expenses, filterYearState);
 
     return (
