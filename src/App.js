@@ -20,7 +20,7 @@ function App() {
     const newExpenseData = {
       id: `e${Math.floor(Math.random() * 100).toString()}`,
       title: newExpense.enteredTitle,
-      amount: newExpense.enteredAmount,
+      amount: Number(newExpense.enteredAmount),
       date: newExpense.enteredDate,
     }
 
