@@ -11,15 +11,16 @@ function ExpenseItem(props) {
     //using array desttructuring to set variable to the returned array in Usestate. The first
 
     return (
-        <Card className='expense-item'>
-            
-            <ExpenseDate date={props.date} />
+        <li>     
+            <Card className='expense-item'>               
+                <ExpenseDate date={props.date} />
 
-            <div className='expense-item__description'>
-                <h2>{props.title}</h2>
-                <div className='expense-item__price'>${props.amount}</div>
-            </div>
-        </Card>
+                <div className='expense-item__description'>
+                    <h2>{props.title}</h2>
+                    <div className='expense-item__price'>${props.amount}</div>
+                </div>
+            </Card>
+        </li>
     )
 };
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Card from'../UI/Card/Card.component';
-import ExpenseItem from './ExpenseItem.component';
+import ExpensesList from './ExpensesList.component';
 import ExpenseFilter from './ExpenseFilter.component';
 
 import { filterByYearHandler } from '../../Utilities'
@@ -20,25 +20,11 @@ function ExpensesContainer(props) {
     // Saving the filtered expenses data that will be used to dynamically generate expense items
     const filteredData = filterByYearHandler(expenses, filterYearState);
     
-    let expensesContent = <p>No expenses found.</p>
-
-    if (filteredData.length > 0) {
-        expensesContent = filteredData.map( expense => (
-                <ExpenseItem 
-                key={expense.id}
-                title={expense.title}
-                amount={expense.amount}
-                date={expense.date}        
-                ></ExpenseItem>
-            )
-        )
-    }
-
     return (
         <div>
             <Card className='expenses'>
                 <ExpenseFilter selected={filterYearState} onSaveFilterYear={saveFilterYearHandler} />
-                {expensesContent}
+                <ExpensesList filteredData={filteredData} />
             </Card>
         </div>
     )
