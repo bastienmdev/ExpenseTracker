@@ -15,6 +15,8 @@ const ExpenseForm = (props) => {
         enteredDate: '',
     })
 
+    const [isFormOpen, setIsFormOpen] = useState(false);
+
     const titleChangeHandler = (event) => {
         // setUserInput({
         //     ...userInput,
@@ -46,6 +48,10 @@ const ExpenseForm = (props) => {
         })
     }
 
+    const cancelClickHandler = () => {
+        setIsFormOpen(false);
+    }
+
     const submitHandler = (event) => {
         event.preventDefault();
 
@@ -59,6 +65,16 @@ const ExpenseForm = (props) => {
         setUserInput((prevState) => {
             return { enteredTitle: '', enteredAmount: '', enteredDate: '' }
         })
+    }
+
+    const addNewExpenseClickHandler = () => {
+        setIsFormOpen(true);
+    }
+
+    if (!isFormOpen) {
+        return <div>
+            <button onClick={addNewExpenseClickHandler}>Add New Expense</button>
+        </div>
     }
 
     return (
@@ -94,6 +110,7 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className='new-expense__actions'>
+                <button type='button' onClick={cancelClickHandler}>Cancel</button>
                 <button type='submit'>Add Expense</button>
             </div>
         </form>
