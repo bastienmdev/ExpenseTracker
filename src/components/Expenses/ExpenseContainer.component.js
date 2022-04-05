@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import Card from'../UI/Card/Card.component';
-import ExpensesList from './ExpensesList.component';
 import ExpenseFilter from './ExpenseFilter.component';
+import ExpensesChart from './ExpensesChart.component';
+import ExpensesList from './ExpensesList.component';
+
 
 import { filterByYearHandler } from '../../Utilities'
 import './ExpenseContainer.component.css';
@@ -23,7 +25,11 @@ function ExpensesContainer(props) {
     return (
         <div>
             <Card className='expenses'>
-                <ExpenseFilter selected={filterYearState} onSaveFilterYear={saveFilterYearHandler} />
+                <ExpenseFilter 
+                    selected={filterYearState} 
+                    onSaveFilterYear={saveFilterYearHandler} 
+                />
+                <ExpensesChart expenses={filteredData}/>
                 <ExpensesList filteredData={filteredData} />
             </Card>
         </div>
